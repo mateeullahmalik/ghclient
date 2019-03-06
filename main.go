@@ -21,19 +21,19 @@ func ParseHeaders(r *http.Request) (string, string) {
 func IsValidSignature(r *http.Request, key string) bool {
 	gotHash := strings.SplitN(r.Header.Get("X-Hub-Signature"), "=", 2)
 	if gotHash[0] != "sha1" {
-		log.Fatal("Checksum is invalid")
+		log.Panicf("Checksum is invalid")
 		return false
 	}
 
 	b, err := ioutil.ReadAll(r.Body)
 	if err != nil {
-		log.Fatalf("Cannot read the request body: %s", err)
+		log.Panicf("Cannot read the request body: %s", err)
 		return false
 	}
 
 	hash := hmac.New(sha1.New, []byte(key))
 	if _, err := hash.Write(b); err != nil {
-		log.Fatalf("Cannot compute the HMAC for request: %s", err)
+		log.Panicf("Cannot compute the HMAC for request: %s", err)
 		return false
 	}
 
