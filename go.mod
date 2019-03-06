@@ -1,1 +1,1 @@
-module github.com/charlesgreen/securitygithub
+module github.com/charlesgreen/security-github/github

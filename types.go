@@ -1,4 +1,4 @@
-package securitygithub
+package github
 
 import (
 	"time"
