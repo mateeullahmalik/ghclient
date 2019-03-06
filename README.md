@@ -1,4 +1,4 @@
-# security-common
+# security-github
 
 Common library used across functions.
 
