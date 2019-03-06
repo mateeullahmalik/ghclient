@@ -1,4 +1,4 @@
-package github
+package securitygithub
 
 import (
 	"crypto/hmac"
