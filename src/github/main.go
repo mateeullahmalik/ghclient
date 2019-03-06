@@ -1,4 +1,4 @@
-package common
+package github
 
 import (
 	"crypto/hmac"
@@ -10,6 +10,7 @@ import (
 	"strings"
 )
 
+// ParseHeaders is used to return the EventID and GitHubEvent from request headers
 func ParseHeaders(r *http.Request) (string, string) {
 	EventID := r.Header.Get("X-GitHub-Delivery")
 	GitHubEvent := r.Header.Get("X-GitHub-Event")
