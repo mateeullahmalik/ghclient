@@ -17,7 +17,8 @@ func ParseHeaders(r *http.Request) (string, string) {
 	return EventID, GitHubEvent
 }
 
-func isValidSignature(r *http.Request, key string) bool {
+// IsValidSignature validates the message body with the checksum sent by GitHub
+func IsValidSignature(r *http.Request, key string) bool {
 	gotHash := strings.SplitN(r.Header.Get("X-Hub-Signature"), "=", 2)
 	if gotHash[0] != "sha1" {
 		log.Fatal("Checksum is invalid")
