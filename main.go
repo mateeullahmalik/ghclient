@@ -38,6 +38,9 @@ func IsValidSignature(r *http.Request, key string) bool {
 	}
 
 	expectedHash := hex.EncodeToString(hash.Sum(nil))
-	log.Printf("EXPECTED HASH: %s", expectedHash)
-	return gotHash[1] == expectedHash
+	isValid := gotHash[1] == expectedHash
+	if isValid == false {
+		log.Panicf("Invalid Hash: %s", expectedHash)
+	}
+	return isValid
 }
